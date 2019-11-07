@@ -20,7 +20,7 @@ jobs:
       run: brew install minikube
     - name: versions
       run: |
-        minikubbe version
+        minikube version
         hyperkit -v
     - name: start
       run: minikube start
