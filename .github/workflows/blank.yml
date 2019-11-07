@@ -17,6 +17,7 @@ jobs:
         echo test, and deploy your project.
     - name: Install hyperkit
       run: |
+        brew update
         brew install hyperkit,
         hyperkit -v
 
