@@ -1,6 +1,6 @@
 name: CI
 
-on: [push,pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -16,3 +16,11 @@ jobs:
     - name: Install hyperkit
       run: |
         brew install hyperkit
+    - name: intall minikube
+      run: brew install minikube
+    - name: mini ver
+      run: minikube version
+    - name: mini start
+      run: minikube start
+
+
