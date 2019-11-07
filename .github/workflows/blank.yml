@@ -10,9 +10,8 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - name: intall minikube
-      run: 
-        git clone https://github.com/moby/hyperkit
-        cd hyperkit && make && cp ./build/hyperkit /usr/local/bin/
+      run: |
+        git clone https://github.com/moby/hyperkit && cd hyperkit && make && cp ./build/hyperkit /usr/local/bin/
         brew update
         brew install minikube
         minikube version
