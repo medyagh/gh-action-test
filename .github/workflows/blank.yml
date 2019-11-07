@@ -4,22 +4,17 @@ on: [pull_request]
 
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
-    - name: another one liner
-      run: brew update
-    - name: Install hyperkit
-      run: |
-        brew install hyperkit
     - name: intall minikube
-      run: brew install minikube
-    - name: versions
-      run: |
+      run: 
+        git clone https://github.com/moby/hyperkit
+        cd hyperkit && make && cp ./build/hyperkit /usr/local/bin/
+        brew update
+        brew install minikube
         minikube version
         hyperkit -v
     - name: start
