@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [push,pull_request]
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
         echo test, and deploy your project.
     - name: Install hyperkit
       run: |
-        brew update
+        brew update,
         brew install hyperkit,
         hyperkit -v
 
