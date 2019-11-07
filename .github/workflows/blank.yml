@@ -11,6 +11,9 @@ jobs:
       run: echo Hello, world!
     - name: intall minikube
       run: |
+        brew install opam libev
+        opam init
+        eval `opam config env` && opam install uri qcow.0.10.4 conduit.1.0.0 lwt.3.1.0 qcow-tool mirage-block-unix.2.9.0 conf-libev logs fmt mirage-unix prometheus-app
         git clone https://github.com/moby/hyperkit && cd hyperkit && make && cp ./build/hyperkit /usr/local/bin/
         brew update
         brew install minikube
