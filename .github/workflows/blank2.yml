@@ -9,18 +9,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: install minikube && kvm
-      run: sudo apt-get update
-    - name: install minikube && kvm
-      run: sudo apt-get update
-    - name: install minikube && kvm
-      run: sudo apt-get update
     - name: step1
       run: sudo apt-get update
     - name: step2
       run: sudo apt-get update
     - name: step3
-      run: sudo egrep -c '(vmx|svm)' /proc/cpuinfo
+      run: sudo egrep -c '(vmx|svm)' /proc/cpuinfo || true
     - name: step4
       run: sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
     - name: step5
