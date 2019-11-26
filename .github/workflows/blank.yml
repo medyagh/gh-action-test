@@ -1,23 +1,25 @@
 name: CI
 
-on: [push]
+on: [pull_request]
 
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
-    - name: Run a multi-line script
+    - name: intall minikube
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
-    - name: Install hyperkit
-      run: |
+        brew install opam libev
+        opam init --yes --no-setup
+        eval `opam config env` && opam install uri qcow.0.10.4 conduit.1.0.0 lwt.3.1.0 qcow-tool mirage-block-unix.2.9.0 conf-libev logs fmt mirage-unix prometheus-app
+        git clone https://github.com/moby/hyperkit && cd hyperkit && make && cp ./build/hyperkit /usr/local/bin/
         brew update
-        brew install hyperkit,
+        brew install minikube
+        minikube version
         hyperkit -v
+    - name: start
+      run: minikube start
+
 
