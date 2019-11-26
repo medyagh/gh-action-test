@@ -24,7 +24,7 @@ jobs:
     - name: step7_a
       run: sudo addgroup libvirtd
     - name: step7_a
-      run: sudo usermod -a -G libvirtd $(whami)
+      run: sudo usermod -a -G libvirtd $(whoami)
     - name: step7_b
       run: sudo adduser `id -un` libvirtd
     - name: step7_c
