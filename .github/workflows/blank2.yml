@@ -23,10 +23,14 @@ jobs:
       run: sudo install minikube-linux-amd64 /usr/local/bin/minikube
     - name: step7_a
       run: sudo addgroup libvirtd
+    - name: step7_a
+      run: sudo usermod -a -G libvirtd $(whami)
     - name: step7_b
       run: sudo adduser `id -un` libvirtd
+    - name: step7_c
+      run: groups
     - name: step8
-      run: minikube start --vm-driver=kvm2
+      run: minikube start --vm-driver=kvm2 
     - name: step9
       run: minikube status
     - name: step10
